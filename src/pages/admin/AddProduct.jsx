@@ -16,6 +16,8 @@ export default function AddProduct() {
     let pid = localStorage.getItem('pid');
     let token = localStorage.getItem('token')
 
+    console.log('pid', pid)
+
     let navigate = useNavigate();
 
     const submit = () => {

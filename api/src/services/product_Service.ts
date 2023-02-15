@@ -7,7 +7,8 @@ export const product = async () => {
 }
 
 export const getSingleProduct = async (id: string) => {
-    const product = await Products.findById({ '_id': id })
+    // const product = await Products.findById({ 'pid': id })
+    const product = await Products.find({ 'pid': id });
     if (!product) return 'no product found ';
     return product;
 }

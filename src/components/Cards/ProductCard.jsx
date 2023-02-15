@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function ProductCard() {
+export default function ProductCard({ id, name, price, title, img }) {
     return (
         <>
             <div class="p-4 md:w-1/3 sm:w-full">
                 <div class="h-56 border-2 border-gray-200 border-opacity-60 rounded-xl overflow-hidden">
                     <div className="w-full h-16 bg-gray-100 rounded-t-xl px-8 py-5 border-gray-300 border">
                         <div className='flex flex-row justify-between'>
-                            <h3>Product Name</h3>
+                            <h3>{title}</h3>
                             <section className='flex flex-row'>
                                 <div className=''>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-600">
@@ -24,21 +24,19 @@ export default function ProductCard() {
                         </div>
                     </div>
                     <div className='flex flex-row justify-around'>
-                    <div class="p-6">
-                        <img src=" " alt=' ' className='rounded-xl'/>
-                    </div>
-                    <div class="p-6">
-                        <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">Shop 1</h2>
-                        <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">Shop 2</h2>
-                        <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">Shop 3</h2>
-                        <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">Shop 4</h2>
-                        <div class="flex items-center flex-wrap justify-between">
-                            <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">$Price
-                            </a>
+                        <div class="p-6">
+                            <img src={`http://localhost:2000/uploads/${img}`} alt=' ' className='rounded-xl' />
+                        </div>
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">{name}</h2>
+
+                            <div class="flex items-center flex-wrap justify-between">
+                                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">${price}
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    
+
                 </div>
             </div>
         </>
