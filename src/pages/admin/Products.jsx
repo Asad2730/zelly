@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ProductCard from '../../components/Cards/ProductCard'
 import AddCard from '../../components/Cards/AddCard'
 
 export default function Products() {
+
+    const token = localStorage.getItem('token')
+    let pid = localStorage.getItem('pid');
+
+
+
     return (
         <>
             <section class="text-gray-600 body-font">
