@@ -19,7 +19,7 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
-    category: { type: String, enum: ["men's", "women's", 'children', 'sports', 'toys', 'watches', 'groceries'], required: true },
+    category: { type: String, required: true },
     brandName: {
         type: String,
         required: true,

@@ -26,15 +26,8 @@ export const getProductByID = async (req: Request, res: Response) => {
 }
 
 export const createProduct = async (req: Request, res: Response) => {
-    if (!req.file) return res.send({ statusCode: 500, message: 'no images found' });
-    const files: any = req?.file;
-    const filePath = files.path;
-    files.mv('uploads/' + files.name, (err: Error) => {
-        if (err) {
-            console.log(err.message);
-            return res.status(500).send(err);
-        }
-    });
+    // if (!req.files) return res.send({ statusCode: 500, message: 'no images found' });
+    // const files: any = req?.files;
     // await uploadImage(files);
     // const imagePaths: Array<any> = [];
     // const basePath = `${req.protocol}://localhost:2000/uploads/`
@@ -45,10 +38,17 @@ export const createProduct = async (req: Request, res: Response) => {
     //     }
     //     )
     // }
-    // const imageFileName = req?.files?.filename;       // http:localhost:3000/uploads/image-344433 
+    // // const imageFileName = req?.files?.filename;       // http:localhost:3000/uploads/image-344433 
+
+    const file = req.file;
+    if (!file) {
+        const error = new Error('Please upload a file');
+        console.log(error)
+    }
+
 
     const productData: IProducts = req.body;
-    productData.images = filePath;
+    productData.images = file?.filename;
 
     try {
         const product = await addProducts(productData);

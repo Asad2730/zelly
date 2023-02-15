@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
 
@@ -15,10 +16,12 @@ export default function AddProduct() {
     let pid = localStorage.getItem('pid');
     let token = localStorage.getItem('token')
 
+    let navigate = useNavigate();
+
     const submit = () => {
 
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('pictures', file);
         formData.append('title', title)
         formData.append('Price', price)
         formData.append('sizes', size)
@@ -36,6 +39,7 @@ export default function AddProduct() {
         })
             .then(response => {
                 console.log(response.data);
+                navigate('/floors')
             })
             .catch(error => {
                 console.error(error);
@@ -127,7 +131,7 @@ export default function AddProduct() {
                             <span className="text-xs text-gray-600  italic font-normal"></span>
                         </label>
                         <input type="file" className=""
-                            value={file}
+
                             onChange={(e) => setFile(e.target.files[0])}
                         />
                     </div>
