@@ -1,9 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function AddCard() {
+
+    const navigation = useNavigate();
     return (
         <>
-            <div class="p-4 md:w-1/3 ">
+            <div class="p-4 md:w-1/3 " onClick={() => navigation('/addproduct')}>
                 <div class="h-56 border-2 border-gray-200 bg-gray-100 border-opacity-60 rounded-xl overflow-hidden flex justify-center items-center">
                     <div className="w-full h-16 rounded-t-xl px-8 ">
                         <center>

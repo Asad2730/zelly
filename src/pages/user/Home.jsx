@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Features from '../../sections/user/Features';
 import Floors from '../../sections/user/Floors';
 import Hero from '../../sections/user/Hero';
 import Footer from '../../sections/user/Footer';
+//import axios from 'axios';
+
 
 export default function Home() {
+
+  // const tokken = localStorage.getItem('token');
+  // const [floors, setFloors] = useState([]);
+
+  // useEffect(() => {
+
+  //   axios.get(`http://localhost:2000/api/shop/getShops?token=${tokken}`)
+  //     .then(res => {
+
+  //       setFloors(res.data.data)
+  //       console.log('RESData', floors);
+
+  //     }).catch(err => {
+  //       console.log('Error:', err);
+  //     })
+  // }, [])
+
+
+
   return (
     <>
       <Hero />
@@ -17,14 +38,20 @@ export default function Home() {
       </div>
 
       <Floors />
-      <Floors />
-      <Floors />
-      <div className='flex flex-wrap justify-center'>
-        <button type="button" class="text-white bg-indigo-400 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2">
-          View More
-        </button>
-      </div>
-    
+      {/* 
+      {
+        floors.map((i, index) => (
+          <Floors
+            id={i['_id']} shopname={i['shopName']}
+            shopNo={i['shopNumber']} floorNo={i['floorNumber']}
+            type={i['shopType']}
+            index={index}
+            count={floors.size}
+          />
+        ))
+      } */}
+
+
       <Footer />
     </>
   );

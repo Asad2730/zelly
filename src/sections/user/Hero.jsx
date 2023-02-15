@@ -2,15 +2,19 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom';
 
 const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Features', href: '#' },
   { name: 'Marketplace', href: '#' },
   { name: 'Company', href: '#' },
+  { name: 'Login', href: '/login' },
 ]
 
 export default function Hero() {
+
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -65,7 +69,9 @@ export default function Hero() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
+              <a
+                onClick={() => navigate(item.href)}
+                key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
                 {item.name}
               </a>
             ))}

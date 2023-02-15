@@ -10,8 +10,7 @@ export default function Products() {
                 <div class="container px-5 mx-auto">
                     <div class="flex flex-wrap -m-4">
                         <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+
                     </div>
                 </div>
             </section>
