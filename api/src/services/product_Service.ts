@@ -13,6 +13,13 @@ export const getSingleProduct = async (id: string) => {
     return product;
 }
 
+
+export const getSingleProductId = async (id: string) => {
+    const product = await Products.findById({ '_id': id })
+    if (!product) return 'no product found ';
+    return product;
+}
+
 export const addProducts = async (productData: IProducts) => {
     const product = new Products(productData);
     await product.save();

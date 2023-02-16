@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
+
+    let id = localStorage.getItem('Id')
+
+    console.log('ID', id)
 
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
@@ -20,6 +24,28 @@ export default function AddProduct() {
 
     let navigate = useNavigate();
 
+    let Title = id === 'id' ? 'Add Product' : 'Update Product';
+    let URL = id === 'id' ? `http://localhost:2000/api/product/createProduct?token=${token}` : `http://localhost:2000/api/shop/update/?id=${id}&token=${token}`;
+
+    useEffect(() => {
+        console.log('url', URL)
+        if (id !== null && id !== 'id') {
+
+            let url = `http://localhost:2000/api/product/getProductwithPk/${id}?token=${token}`;
+            axios.get(url)
+                .then(res => {
+                    setTitle(res.data.data['title'])
+                    setPrice(res.data.data['Price'])
+                    setSize(res.data.data['sizes'][0])
+                    setStatus(res.data.data['status'])
+                    setCategory(res.data.data['category'])
+                    setBrand(res.data.data['brandName'])
+                    setDeliver(res.data.data['deliveryTime'])
+                    setDescription(res.data.data['description'])
+                }).catch(err => console.log('err', err))
+        }
+    }, [id, token])
+
     const submit = () => {
 
         const formData = new FormData();
@@ -34,23 +60,39 @@ export default function AddProduct() {
         formData.append('description', description)
         formData.append('pid', pid)
 
-        axios.post(`http://localhost:2000/api/product/createProduct?token=${token}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                navigate('/floors')
+        if (id === 'id') {
+            axios.post(`${URL}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             })
-            .catch(error => {
-                console.error(error);
-            });
+                .then(response => {
+                    console.log(response.data);
+                    navigate('/floors')
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        } else {
+            axios.put(`${URL}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    console.log(response.data);
+                    navigate('/floors')
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
     }
 
     return (
         <>
-            <h1 className='text-xl mb-4'>Add Product</h1>
+            <h1 className='text-xl mb-4'>{Title}</h1>
             <div className='flex flex-wrap justify-center'>
                 <div className='mx-10'>
                     <div className="flex flex-col mb-2">
