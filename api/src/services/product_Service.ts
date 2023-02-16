@@ -20,6 +20,9 @@ export const getSingleProductId = async (id: string) => {
     return product;
 }
 
+
+
+
 export const addProducts = async (productData: IProducts) => {
     const product = new Products(productData);
     await product.save();

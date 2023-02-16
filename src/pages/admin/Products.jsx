@@ -11,12 +11,27 @@ export default function Products() {
     let pid = localStorage.getItem('pid');
 
     useEffect(() => {
+        loadData()
+    }, [])
+
+    const deleteProduct = (id) => {
+        let url = `http://localhost:2000/api/product/deleteProduct?token=${token}&id=${id}`;
+        axios.delete(url)
+            .then(res => {
+                console.log('deleted', res.data)
+                loadData()
+            })
+            .catch(err => console.log('err', err))
+
+    }
+
+    const loadData = () => {
         axios.get(`http://localhost:2000/api/product/getProductByID/${pid}?token=${token}`)
             .then(res => {
                 setData(res.data.data)
                 console.log(data)
             }).catch(err => console.log(err))
-    }, [])
+    }
 
     return (
         <>
@@ -29,6 +44,7 @@ export default function Products() {
                                     id={i['_id']} title={i['title']} img={i['images'][0]}
                                     price={i['Price']}
                                     name={i['brandName']}
+                                    onClick={deleteProduct}
                                 />
                             ))
                         }

@@ -10,10 +10,12 @@ import { useEffect, useState } from "react";
 
 import slide1 from "../../assets/images/slide-1.jpg";
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Floors() {
+
+    const navigate = useNavigate();
 
     const [usersDict, setUsersDict] = useState({});
     const [len, setLen] = useState(0);
@@ -102,7 +104,9 @@ export default function Floors() {
                                                     className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center  justify-start transition  ease-out duration-700 "
                                                 >
 
-                                                    <Slide index={index}>
+                                                    <Slide index={index} onClick={() => {
+                                                        navigate('/userProducts', { state: { id: i['_id'] } });
+                                                    }}>
                                                         <div className="flex flex-shrink-0 relative w-full sm:w-auto ">
                                                             <img
                                                                 src={slide1}

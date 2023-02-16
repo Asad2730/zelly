@@ -31,7 +31,7 @@ export default function AddProduct() {
         console.log('url', URL)
         if (id !== null && id !== 'id') {
 
-            let url = `http://localhost:2000/api/product/getProductwithPk/${id}?token=${token}`;
+            let url = `http://localhost:2000/api/product/getProductwithPk/${id}`;
             axios.get(url)
                 .then(res => {
                     setTitle(res.data.data['title'])

@@ -7,6 +7,7 @@ import AddShop from './pages/admin/AddShop'
 import Floors from './pages/admin/Floors'
 import Products from './pages/admin/Products'
 import Shops from './pages/admin/Shops'
+import UserProduct from './pages//user/products'
 import { Route, Routes } from "react-router-dom";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/floors' element={<Floors />} />
         <Route path='/products' element={<Products />} />
         <Route path='/shops' element={<Shops />} />
+        <Route path='/userProducts' element={<UserProduct />} />
       </Routes>
 
     </>
