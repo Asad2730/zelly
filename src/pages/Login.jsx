@@ -17,13 +17,13 @@ export default function Login() {
 
         axios.post('http://localhost:2000/api/user/login', jsn)
             .then(res => {
+                console.log('111', res.data['token'])
                 localStorage.setItem('token', res.data['token'])
-
-                if (res.data['userType'] === 'CUSTOMER') {
-                    navigate('/')
-                } else {
-                    navigate('/floors')
-                }
+                // if (res.data['userType'] === 'CUSTOMER') {
+                //     navigate('/')
+                // } else {
+                //     navigate('/floors')
+                // }
 
             }).catch(err => {
                 console.log('error', err)
