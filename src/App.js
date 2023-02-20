@@ -10,6 +10,7 @@ import Shops from './pages/admin/Shops'
 import UserProduct from './pages//user/products'
 import { Route, Routes } from "react-router-dom";
 import AllProducts from './pages/admin/AllProducts';
+import ProductDetail from './pages/user/ProductDetail'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/shops' element={<Shops />} />
         <Route path='/userProducts' element={<UserProduct />} />
         <Route path='/allProducts' element={<AllProducts />} />
+        <Route path='/productDetail' element={<ProductDetail />} />
       </Routes>
 
     </>
