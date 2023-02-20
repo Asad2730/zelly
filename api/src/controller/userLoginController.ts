@@ -58,6 +58,8 @@ export const Login2 = async (req: Request, res: Response) => {
                 timeAccountCreation: Date.now(),
                 createdAt: new Date().toLocaleString(),
             }
+
+            console.log('token', data.token)
             res.status(200).json(data);
         }
 

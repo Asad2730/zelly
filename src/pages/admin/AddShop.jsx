@@ -36,7 +36,7 @@ export default function AddShop() {
         }
         axios.post(`http://localhost:2000/api/shop/create?token=${token}`, jsn)
             .then(res => {
-
+                console.log('res', res.data)
                 navigate('/floors')
             }).catch(err => console.log('error', err))
     }

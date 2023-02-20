@@ -19,11 +19,11 @@ export default function Login() {
             .then(res => {
                 console.log('111', res.data['token'])
                 localStorage.setItem('token', res.data['token'])
-                // if (res.data['userType'] === 'CUSTOMER') {
-                //     navigate('/')
-                // } else {
-                //     navigate('/floors')
-                // }
+                if (res.data['userType'] === 'CUSTOMER') {
+                    navigate('/')
+                } else {
+                    navigate('/floors')
+                }
 
             }).catch(err => {
                 console.log('error', err)

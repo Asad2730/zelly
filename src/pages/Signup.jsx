@@ -36,7 +36,10 @@ export default function Signup() {
             }
         }
         axios.post('http://localhost:2000/api/user/signUp', jsn)
-            .then(r => navigate('/login'))
+            .then(r => {
+                navigate('/login')
+
+            })
             .catch(e => console.log(e))
     }
 
