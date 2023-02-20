@@ -10,20 +10,21 @@ const UserProduct = () => {
 
   const location = useLocation();
   const [products, setProducts] = useState([]);
-
-  console.log('URLPID', location.state.id)
+  let url = `http://localhost:2000/api/product/getUserProducts/${location.state.id}`;
+  console.log('URL', location.state.id)
 
   useEffect(() => {
-    let url = `http://localhost:2000/api/product/getUserProducts/${location.state.id}`;
+    console.log('URL', url)
     axios.get(url)
       .then(res => {
         setProducts(res.data.data)
         console.log('DATA', products)
-        console.log('len', products.length)
       }).catch(err => console.log('Err', err))
 
-
   }, [])
+
+
+
 
   return (
     <>
@@ -32,15 +33,17 @@ const UserProduct = () => {
       <section class="text-gray-400 body-font">
         <div class="container px-5 py-24 mx-auto ">
           <div class="flex flex-wrap -m-4 justify-around">
+
             {
-              products.map((i) => {
+              products.map((product) => (
                 <ProductCard
-                  brandName={i['brandName']}
-                  image={`http://localhost:2000/uploads/${i['images'][0]}`}
-                  title={i['title']}
-                  price={i['Price']}
+                  id={product['_id']}
+                  brandName={product['brandName']}
+                  image={`http://localhost:2000/uploads/${product['images'][0]}`}
+                  title={product['title']}
+                  price={product['Price']}
                 />
-              })
+              ))
             }
 
           </div>
