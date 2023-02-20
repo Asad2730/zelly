@@ -13,8 +13,11 @@ export const getSingleShop = async (id: string) => {
 }
 
 export const addShop = async (shopData: object) => {
+    console.log('data', shopData)
     const shop = new Shop(shopData);
-    await shop.save();
+    await shop.save()
+        .then(res => console.log('RES', res))
+        .catch(err => console.log('err', err))
     return shop;
 }
 

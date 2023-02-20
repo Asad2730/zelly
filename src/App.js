@@ -9,6 +9,8 @@ import Products from './pages/admin/Products'
 import Shops from './pages/admin/Shops'
 import UserProduct from './pages//user/products'
 import { Route, Routes } from "react-router-dom";
+import AllProducts from './pages/admin/AllProducts';
+
 function App() {
   return (
     <>
@@ -23,6 +25,7 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/shops' element={<Shops />} />
         <Route path='/userProducts' element={<UserProduct />} />
+        <Route path='/allProducts' element={<AllProducts />} />
       </Routes>
 
     </>
