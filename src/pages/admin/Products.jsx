@@ -29,7 +29,7 @@ export default function Products() {
         axios.get(`http://localhost:2000/api/product/getProductByID/${pid}?token=${token}`)
             .then(res => {
                 setData(res.data.data)
-                console.log(data)
+                console.log('DATA', data)
             }).catch(err => console.log(err))
     }
 

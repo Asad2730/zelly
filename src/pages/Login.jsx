@@ -20,7 +20,7 @@ export default function Login() {
                 localStorage.setItem('token', res.data['token'])
 
                 if (res.data['userType'] === 'CUSTOMER') {
-                    navigate('/floors') //remove this
+                    navigate('/')
                 } else {
                     navigate('/floors')
                 }
