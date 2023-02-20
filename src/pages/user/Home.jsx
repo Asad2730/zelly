@@ -4,26 +4,42 @@ import Floors from '../../sections/user/Floors';
 import Hero from '../../sections/user/Hero';
 import Footer from '../../sections/user/Footer';
 import MainHeader from '../../components/header/MainHeader'
-//import axios from 'axios';
+import axios from 'axios';
 
 
 export default function Home() {
 
-  // const tokken = localStorage.getItem('token');
-  // const [floors, setFloors] = useState([]);
 
-  // useEffect(() => {
+  const [usersDict, setUsersDict] = useState({});
+  const [len, setLen] = useState(0);
 
-  //   axios.get(`http://localhost:2000/api/shop/getShops?token=${tokken}`)
-  //     .then(res => {
+  useEffect(() => {
 
-  //       setFloors(res.data.data)
-  //       console.log('RESData', floors);
+    axios.get(`http://localhost:2000/api/shop/getShops`)
+      .then(res => {
+        setLen(res.data.data.length)
+        const dict = res.data.data.reduce((acc, data) => {
+          if (!acc[data['floorNumber']]) {
+            acc[data['floorNumber']] = [data];
+          } else {
+            acc[data['floorNumber']].push(data);
+          }
+          return acc;
+        }, {});
 
-  //     }).catch(err => {
-  //       console.log('Error:', err);
-  //     })
-  // }, [])
+        setUsersDict(dict);
+
+
+
+      }).catch(err => {
+        console.log('Error:', err);
+      })
+
+
+
+  }, [])
+
+
 
 
 
@@ -38,8 +54,15 @@ export default function Home() {
         <b><h1 className='text-4xl'>Shops</h1></b>
         <div className='h-0.5 w-1/12 bg-black ml-6'></div>
       </div>
+      {
+        Object.keys(usersDict).map((k) =>
+          <>
+            <Floors number={k} list={usersDict[k]} len={len} />
+          </>
+        )
+      }
 
-      <Floors number={1} />
+
 
       <center>
         <button class="my-4 bg-indigo-500 text-white hover:bg-gray-400  font-bold py-2 px-4 rounded inline-flex items-center">

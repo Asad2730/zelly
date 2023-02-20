@@ -72,12 +72,12 @@ export default function FloorCard({ shopNo, id }) {
                                     ))}
 
                                     <div class="flex items-center flex-wrap justify-between">
-                                        <Link to='/adminshops'> <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">View All Shops
+                                        {/* <Link to='/adminshops'> <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">View All Shops
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
                                                 <path d="M12 5l7 7-7 7"></path>
                                             </svg>
-                                        </a></Link>
+                                        </a></Link> */}
                                         <Link to='/addshop'>
                                             <a class="text-green-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">Add Shop
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-500">

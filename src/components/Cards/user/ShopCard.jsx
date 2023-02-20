@@ -1,15 +1,27 @@
 import { Slide } from 'pure-react-carousel';
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function SliderCard({ id, image, name }) {
+
+    let navigate = useNavigate()
+    //
+
     return (
         <>
-            
-                <Slide index={id}>
-                <Link to='/products'>
-                    <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+
+            <Slide index={id} >
+                <div onClick={() => { navigate('/userProducts', { state: { id: id } }) }}>
+                    {/* <Link to={{
+                    pathname: '/userProducts',
+                    state: { id: id }
+                }}> */}
+                    <div
+
+                        className="flex flex-shrink-0 relative w-full sm:w-auto">
                         <img
+
                             src={image}
                             alt="black chair and white table"
                             className=" object-cover object-center w-full md:h-80 h-36"
@@ -20,8 +32,10 @@ export default function SliderCard({ id, image, name }) {
                             </h2>
                         </div>
                     </div>
-                    </Link>
-                </Slide>
+                    {/* </Link> */}
+                </div>
+            </Slide>
+
         </>
     );
 }

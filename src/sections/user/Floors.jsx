@@ -18,38 +18,38 @@ import ShopCard from "../../components/Cards/user/ShopCard";
 
 
 
-export default function Floors({ number }) {
+export default function Floors({ number, list, len }) {
 
     const navigate = useNavigate();
 
-    const [usersDict, setUsersDict] = useState({});
-    const [len, setLen] = useState(0);
+    // const [usersDict, setUsersDict] = useState({});
+    // const [len, setLen] = useState(0);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        axios.get(`http://localhost:2000/api/shop/getShops`)
-            .then(res => {
-                setLen(res.data.data.length)
-                const dict = res.data.data.reduce((acc, data) => {
-                    if (!acc[data['floorNumber']]) {
-                        acc[data['floorNumber']] = [data];
-                    } else {
-                        acc[data['floorNumber']].push(data);
-                    }
-                    return acc;
-                }, {});
+    //     axios.get(`http://localhost:2000/api/shop/getShops`)
+    //         .then(res => {
+    //             setLen(res.data.data.length)
+    //             const dict = res.data.data.reduce((acc, data) => {
+    //                 if (!acc[data['floorNumber']]) {
+    //                     acc[data['floorNumber']] = [data];
+    //                 } else {
+    //                     acc[data['floorNumber']].push(data);
+    //                 }
+    //                 return acc;
+    //             }, {});
 
-                setUsersDict(dict);
-
-
-
-            }).catch(err => {
-                console.log('Error:', err);
-            })
+    //             setUsersDict(dict);
 
 
 
-    }, [])
+    //         }).catch(err => {
+    //             console.log('Error:', err);
+    //         })
+
+
+
+    // }, [])
 
 
 
@@ -70,7 +70,7 @@ export default function Floors({ number }) {
                         className="lg:block hidden"
                         naturalSlideWidth={100}
                         isIntrinsicHeight={true}
-                        totalSlides={8}
+                        totalSlides={len}
                         visibleSlides={3}
                         step={1}
                         infinite={true}
@@ -104,14 +104,16 @@ export default function Floors({ number }) {
                                         id="slider"
                                         className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700 "
                                     >
-                                        <ShopCard id={0} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={1} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={2} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={3} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={4} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={5} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={6} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={7} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
+                                        {
+                                            list.map((i) => (
+                                                <ShopCard
+                                                    id={i['_id']}
+                                                    image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'}
+                                                    name={i['shopName']} />
+                                            ))
+                                        }
+
+
 
                                     </div>
                                 </Slider>
@@ -146,7 +148,7 @@ export default function Floors({ number }) {
                         className="lg:hidden md:block hidden"
                         naturalSlideWidth={100}
                         isIntrinsicHeight={true}
-                        totalSlides={8}
+                        totalSlides={len}
                         visibleSlides={2}
                         step={1}
                         infinite={true}
@@ -180,15 +182,14 @@ export default function Floors({ number }) {
                                         id="slider"
                                         className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                                     >
-                                        <ShopCard id={0} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={1} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={2} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={3} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={4} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={5} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={6} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={7} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-
+                                        {
+                                            list.map((i) => (
+                                                <ShopCard
+                                                    id={i['_id']}
+                                                    image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'}
+                                                    name={i['shopName']} />
+                                            ))
+                                        }
                                     </div>
                                 </Slider>
                             </div>
@@ -222,7 +223,7 @@ export default function Floors({ number }) {
                         className="block md:hidden "
                         naturalSlideWidth={100}
                         isIntrinsicHeight={true}
-                        totalSlides={4}
+                        totalSlides={len}
                         visibleSlides={1}
                         step={1}
                         infinite={true}
@@ -256,15 +257,14 @@ export default function Floors({ number }) {
                                         id="slider"
                                         className="h-full w-full flex lg:gap-8 md:gap-6 items-center justify-start transition ease-out duration-700"
                                     >
-                                        <ShopCard id={0} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={1} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={2} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={3} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={4} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={5} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={6} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-                                        <ShopCard id={7} image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'} name={'TuckShop'} />
-
+                                        {
+                                            list.map((i) => (
+                                                <ShopCard
+                                                    id={i['_id']}
+                                                    image={'https://image.cnbcfm.com/api/v1/image/107036059-1648140541349-gettyimages-1239350024-PWeaver-Target-01.jpeg?v=1654544436&w=1920&h=1080'}
+                                                    name={i['shopName']} />
+                                            ))
+                                        }
                                     </div>
                                 </Slider>
                             </div>

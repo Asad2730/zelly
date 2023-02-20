@@ -36,21 +36,22 @@ export default function ShopCard({ id, name, shopType, cnic, shopName, shopNo, o
                         <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">{shopType}</h2>
                         <h2 class="tracking-widest text-sm title-font font-medium text-gray-400 mb-1">{cnic}</h2>
                         <div class="flex items-center flex-wrap justify-between">
-                            <Link to='/adminproducts'>
+                            {/* <Link to='/adminproducts'>
                                 <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href=" ">View Products
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
                                     </svg>
                                 </a>
-                            </Link>
+                            </Link> */}
                             {/* <Link to='/addproduct'> */}
                             <a
                                 class="text-green-500 inline-flex items-center md:mb-2 lg:mb-0"
                                 href=" "
                                 onClick={() => {
-                                    // localStorage.setItem('Id', id)
-                                    nav('/addshop')
+                                    localStorage.setItem('Id', 'id')
+                                    localStorage.setItem('pid', id)
+                                    nav('/addproduct')
                                 }}
                             >Add Product
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-500">

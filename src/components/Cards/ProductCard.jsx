@@ -17,6 +17,7 @@ export default function ProductCard({ id, name, price, title, img, onClick }) {
                                 <div
                                     onClick={() => {
                                         localStorage.setItem('Id', id)
+                                        localStorage.setItem('pid', id)
                                         nav('/addproduct')
                                     }}
                                     className=''>
