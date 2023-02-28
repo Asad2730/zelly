@@ -7,10 +7,11 @@ import AddShop from './pages/admin/AddShop'
 import Floors from './pages/admin/Floors'
 import Products from './pages/admin/Products'
 import Shops from './pages/admin/Shops'
-import UserProduct from './pages//user/products'
+import UserProduct from './pages/user/products'
 import { Route, Routes } from "react-router-dom";
 import AllProducts from './pages/admin/AllProducts';
 import ProductDetail from './pages/user/ProductDetail'
+
 
 function App() {
   return (

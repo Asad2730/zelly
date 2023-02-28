@@ -8,6 +8,7 @@ import TitleCard from '../../components/Cards/user/TitleCard';
 
 const UserProduct = () => {
 
+
   const location = useLocation();
   const [products, setProducts] = useState([]);
   let url = `http://localhost:2000/api/product/getUserProducts/${location.state.id}`;

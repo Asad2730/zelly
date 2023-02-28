@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 
 const navigation = [
     { name: 'Home', href: '#', path: '/' },
-    { name: 'About', href: '#', path: '' },
+    // { name: 'About', href: '#', path: '' },
     { name: 'Shops', href: '#', path: '' },
-    { name: 'Products', href: '#', path: '/products' },
+    // { name: 'Products', href: '#', path: '/userProducts' },
     { name: 'Cart', href: '#', path: '/' },
-    { name: 'Privacy Policy', href: '#', path: '' },
+    // { name: 'Privacy Policy', href: '#', path: '' },
 ]
 
 export default function MainHeader() {

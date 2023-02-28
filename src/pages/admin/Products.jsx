@@ -11,6 +11,7 @@ export default function Products() {
     let pid = localStorage.getItem('pid');
 
     useEffect(() => {
+
         loadData()
     }, [])
 
